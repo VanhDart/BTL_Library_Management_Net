@@ -23,21 +23,21 @@ namespace ManagamentLibrary.Models
         public string? Email {  get; set; }
 
 
-        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=a;Integrated Security=True";
+        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=Library Management;Integrated Security=True";
 
         public void LoadData(DataGrid grid)
         {
             using (SqlConnection con = new SqlConnection(connect))
             {
-                con.Open(); // Mở kết nối
+                con.Open(); 
 
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Student", con);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
 
-                adapter.Fill(dt); // Lấy tất cả dữ liệu vào DataTable
-                grid.ItemsSource = dt.DefaultView; // Hiển thị dữ liệu trong DataGrid
+                adapter.Fill(dt); 
+                grid.ItemsSource = dt.DefaultView; 
                 con.Close();
             }
         }
@@ -52,14 +52,14 @@ namespace ManagamentLibrary.Models
 
                 using (SqlCommand command = new SqlCommand(sqlQueryNewBK, conn))
                 {
-                    // Gán tham số với kiểu dữ liệu chính xác
+                   
                     command.Parameters.Add(new SqlParameter("@MSV", SqlDbType.NVarChar) { Value = MSV });
                     command.Parameters.Add(new SqlParameter("@Name", SqlDbType.NVarChar) { Value = Name });
                     command.Parameters.Add(new SqlParameter("@Class", SqlDbType.NVarChar) { Value = Class });
                     command.Parameters.Add(new SqlParameter("@Phone", SqlDbType.NVarChar) { Value = PhoneNumber });
                     command.Parameters.Add(new SqlParameter("@Email", SqlDbType.NVarChar) { Value = Email });
 
-                    // Thực thi câu lệnh
+                  
                     try
                     {
                         command.ExecuteNonQuery();
@@ -103,7 +103,8 @@ namespace ManagamentLibrary.Models
             {
                 conn.Open();
 
-                string sqlQueryNewBK = "UPDATE Student SET Name = @Name ,Class = @Class , Phone = @Phone, Email = @Email  WHERE MSV = @MSV ";
+                string sqlQueryNewBK = @"
+                                        UPDATE Student SET Name = @Name ,Class = @Class , Phone = @Phone, Email = @Email  WHERE MSV = @MSV; ";
 
                 using (SqlCommand command = new SqlCommand(sqlQueryNewBK, conn))
                 {
@@ -124,7 +125,8 @@ namespace ManagamentLibrary.Models
             {
                 conn.Open();
 
-                string sqlQueryNewBK = "DELETE FROM Student WHERE MSV = @MSV";
+                string sqlQueryNewBK = @"DELETE FROM BorrowBook WHERE MSV = @MSV;
+                                        DELETE FROM Student WHERE MSV = @MSV; ";
 
                 using (SqlCommand command = new SqlCommand(sqlQueryNewBK, conn))
                 {

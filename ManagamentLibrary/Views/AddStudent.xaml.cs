@@ -69,7 +69,6 @@ namespace ManagamentLibrary.Views
                 return;
             }
 
-            // Chuyển đổi giá trị nhập vào thành các kiểu dữ liệu tương ứng
             string stMSV = MSV.Text;
             string StName = Name.Text;
             string StClass = Class.Text;

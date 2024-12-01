@@ -12,7 +12,7 @@ namespace ManagamentLibrary.Models
 {
     public class Borrow_ReturnHistoryModel
     {
-        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=a;Integrated Security=True";
+        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=Library Management;Integrated Security=True";
         public void ReturnHistory(DataGrid grid )
         {
             using (SqlConnection conn = new SqlConnection(connect))
@@ -48,7 +48,7 @@ namespace ManagamentLibrary.Models
                             bb.BorrowDate
                         FROM BorrowBook bb
                         INNER JOIN Student s ON bb.MSV = s.MSV
-                        INNER JOIN NewBook nb ON bb.bookId = nb.bookId";
+                        INNER JOIN Book nb ON bb.bookId = nb.bookId";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {

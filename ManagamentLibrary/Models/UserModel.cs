@@ -13,7 +13,7 @@ namespace ManagamentLibrary.Models
         public string? UserName { get; set; }
         public string? Password { get; set; }
         public string? Email { get; set; }
-        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=a;Integrated Security=True";
+        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=Library Management;Integrated Security=True";
 
         // login
         public bool ValidateUser()
@@ -21,7 +21,7 @@ namespace ManagamentLibrary.Models
             using (SqlConnection conn = new SqlConnection(connect))
             {
                 conn.Open();
-                string sql = @"SELECT COUNT(1) from loginTable 
+                string sql = @"SELECT COUNT(1) from Admin 
                                WHERE username COLLATE SQL_Latin1_General_CP1_CS_AS = @username 
                                AND pass COLLATE SQL_Latin1_General_CP1_CS_AS = @pass";
                 using(SqlCommand cmd = new SqlCommand(sql,conn))
@@ -39,7 +39,7 @@ namespace ManagamentLibrary.Models
             using (SqlConnection conn = new SqlConnection(connect))
             {
                 conn.Open();
-                string sql = "INSERT INTO loginTable (username, pass, email) VALUES (@username, @password, @Email)";
+                string sql = "INSERT INTO Admin (username, pass, email) VALUES (@username, @password, @Email)";
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@username", UserName);
@@ -59,7 +59,7 @@ namespace ManagamentLibrary.Models
             {
                 con.Open();
 
-                string sqlUpdatePassWord = "UPDATE loginTable SET pass = @newPass Where email = @email";
+                string sqlUpdatePassWord = "UPDATE Admin SET pass = @newPass Where email = @email";
                 using (SqlCommand cmd = new SqlCommand(sqlUpdatePassWord, con))
                 {
                     cmd.Parameters.AddWithValue("newPass", newPassWord);

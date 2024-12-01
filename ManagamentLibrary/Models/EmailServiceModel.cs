@@ -12,7 +12,7 @@ namespace ManagamentLibrary.Models
 {
     public class EmailServiceModel
     {
-        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=a;Integrated Security=True";
+        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=Library Management;Integrated Security=True";
 
         public bool SendVerificationEmail(string recipientEmail, string verificationCode)
         {
@@ -47,7 +47,7 @@ namespace ManagamentLibrary.Models
             using (SqlConnection conn = new SqlConnection(connect))
             {
                 conn.Open();
-                string sql = "SELECT email FROM loginTable WHERE email COLLATE SQL_Latin1_General_CP1_CS_AS = @Email";
+                string sql = "SELECT email FROM Admin WHERE email COLLATE SQL_Latin1_General_CP1_CS_AS = @Email";
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@Email", email);

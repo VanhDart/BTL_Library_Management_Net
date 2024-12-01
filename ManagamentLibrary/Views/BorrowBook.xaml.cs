@@ -39,8 +39,8 @@ namespace ManagamentLibrary.Views
             if (books != null && books.Count > 0)
             {
                 BookComboBox.ItemsSource = books;
-                BookComboBox.DisplayMemberPath = "Name"; // Hiển thị thuộc tính Name
-                BookComboBox.SelectedValuePath = "Id";  // Giá trị trả về là Id
+                BookComboBox.DisplayMemberPath = "Name"; 
+                BookComboBox.SelectedValuePath = "Id";  
             }
             else
             {
@@ -73,7 +73,7 @@ namespace ManagamentLibrary.Views
             }
         }
 
-        // khi chọn item khác thì sẽ gán lại giá trị value
+ 
         private void BookComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(BookComboBox.SelectedValue != null)
@@ -90,8 +90,8 @@ namespace ManagamentLibrary.Views
                     string.IsNullOrEmpty(Txt_ClassName.Text) ||
                     string.IsNullOrEmpty(Txt_PhoneNumber.Text) ||
                     string.IsNullOrEmpty(Txt_EmailStudent.Text) ||
-                    BookComboBox.SelectedItem == null ||  // Kiểm tra nếu không có sách nào được chọn
-                    DatePicker_borrowBook.SelectedDate == null) // Kiểm tra nếu chưa chọn ngày)
+                    BookComboBox.SelectedItem == null ||  
+                    DatePicker_borrowBook.SelectedDate == null) 
                 {
                     MessageBox.Show("Vui lòng điền đủ thông tin", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }

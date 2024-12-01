@@ -53,7 +53,7 @@ namespace ManagamentLibrary.Views
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dataGrid_listBorrowBk.SelectedItem is DataRowView currentRow) // DataRowView để truy cập vào dữ liệu hàng đã chọn
+            if (dataGrid_listBorrowBk.SelectedItem is DataRowView currentRow) 
             {
                 string? BorrowId = currentRow["BorrowID"].ToString();
                 string? StudentName = currentRow["StudentName"].ToString();
@@ -67,11 +67,10 @@ namespace ManagamentLibrary.Views
                 txt_BookName.Text = bkName;
                 datePicker_BorrowDate.Text = BorrowDate;
 
-                // Lấy ScrollViewer từ XAML
+               
                 ScrollViewer scrollViewer = (ScrollViewer)this.FindName("scrollViewer");
                 if (scrollViewer != null)
                 {
-                    // Cuộn đến cuối trang
                     scrollViewer.ScrollToVerticalOffset(scrollViewer.ExtentHeight);
                 }
                 

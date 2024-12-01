@@ -12,18 +12,18 @@ namespace ManagamentLibrary.Models
     public class ReturnBookModel
     {
 
-        public int returnId { get; set; } // ID của lần trả sách
-        public int borrowId { get; set; } // ID của lần mượn sách
-        public string? studentName { get; set; } // Tên sinh viên
-        public string? studentID { get; set; } // Mã sinh viên
-        public string? studentClass { get; set; } // Lớp của sinh viên
-        public string? studentPhone { get; set; } // Số điện thoại sinh viên
-        public string? studentEmail { get; set; } // Email sinh viên
-        public string? bookName { get; set; } // Tên sách
-        public string? borrowDate { get; set; } // Ngày mượn sách
+        public int returnId { get; set; } 
+        public int borrowId { get; set; } 
+        public string? studentName { get; set; } 
+        public string? studentID { get; set; } 
+        public string? studentClass { get; set; } 
+        public string? studentPhone { get; set; } 
+        public string? studentEmail { get; set; } 
+        public string? bookName { get; set; } 
+        public string? borrowDate { get; set; } 
         public string? returnDate { get; set; }
 
-        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=a;Integrated Security=True";
+        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=Library Management;Integrated Security=True";
         public void ReturnBookAndDeleteBorrowBook()
         {
             using (SqlConnection conn = new SqlConnection(connect))
@@ -80,7 +80,7 @@ namespace ManagamentLibrary.Models
                             bb.BorrowDate
                         FROM BorrowBook bb
                         INNER JOIN Student s ON bb.MSV = s.MSV
-                        INNER JOIN NewBook nb ON bb.bookId = nb.bookId
+                        INNER JOIN Book nb ON bb.bookId = nb.bookId
                         WHERE bb.MSV = @MSV";
 
                 using (SqlCommand cmd = new SqlCommand(query,conn)) 

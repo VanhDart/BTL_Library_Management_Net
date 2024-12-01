@@ -16,7 +16,7 @@ namespace ManagamentLibrary.Models
         public string? BorrowDate {  get; set; }
 
 
-        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=a;Integrated Security=True";
+        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=Library Management;Integrated Security=True";
         public StudentModel GetStudentInformation(string msv)
         {
             StudentModel student = null!;
@@ -30,7 +30,7 @@ namespace ManagamentLibrary.Models
                     cmd.Parameters.AddWithValue("@MSV", msv);
                     using(SqlDataReader reader = cmd.ExecuteReader()) 
                     { 
-                        if (reader.Read()) //Di chuyển con trỏ đến dòng kết quả đầu tiên. Trả về true nếu có dữ liệu.
+                        if (reader.Read()) 
                         {
                             student = new StudentModel()
                             {
@@ -54,15 +54,15 @@ namespace ManagamentLibrary.Models
 
             using (SqlConnection conn = new SqlConnection(connect))
             {
-                await conn.OpenAsync(); // Mở kết nối bất đồng bộ
+                await conn.OpenAsync(); 
 
-                string sql = "SELECT bookId, bookName FROM NewBook";
+                string sql = "SELECT bookId, bookName FROM Book";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
-                    using (SqlDataReader reader = await cmd.ExecuteReaderAsync()) // Lấy dữ liệu bất đồng bộ
+                    using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                     {
-                        while (await reader.ReadAsync()) // Di chuyển con trỏ đến dòng kết quả đầu tiên
+                        while (await reader.ReadAsync()) 
                         {
                             books.Add(new BookModel
                             {

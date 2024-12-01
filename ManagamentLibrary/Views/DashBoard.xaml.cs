@@ -21,7 +21,7 @@ namespace ManagamentLibrary
     /// </summary>
     public partial class DashBoard : Window
     {
-        private AddBook addBook; // Biến để theo dõi cửa sổ AddBook
+        private AddBook addBook;
 
         private ViewBook viewBook;
 
@@ -47,7 +47,7 @@ namespace ManagamentLibrary
             returnBook = new ReturnBook();
             dashBoardController = new DashBoardController();
             borrow_ReturnHistory = new Borrow_ReturnHistory();
-            this.Closing += DashBoard_Closing;  // kiểm tra xem có của sổ con nào của dashboard chưa đóng hay không
+            this.Closing += DashBoard_Closing;  
         
         }
 
@@ -56,7 +56,7 @@ namespace ManagamentLibrary
             foreach (Window window in Application.Current.Windows)
             {
 
-                if (window != this && window.IsVisible) // Nếu cửa sổ con vẫn còn mở
+                if (window != this && window.IsVisible) 
                 {
                     MessageBox.Show("Please close all open pages before closing the dashboard.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                     e.Cancel = true; 

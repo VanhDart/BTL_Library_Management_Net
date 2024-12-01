@@ -41,7 +41,7 @@ namespace ManagamentLibrary.Views
 
         private void dataGridView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dataGridView1.SelectedItem is DataRowView currentRow) // DataRowView để truy cập vào dữ liệu hàng đã chọn
+            if (dataGridView1.SelectedItem is DataRowView currentRow) 
             {
                 string? bkMSV = currentRow["MSV"].ToString();
                 string? bkName = currentRow["Name"].ToString();
@@ -55,11 +55,10 @@ namespace ManagamentLibrary.Views
                 Phone.Text = bkPhone;
                 Email.Text = bkEmail;   
 
-                // Cuộn màn hình đến phần TextBox
-                ScrollViewer scrollViewer = (ScrollViewer)this.FindName("scrollViewer"); // Lấy ScrollViewer từ XAML
-                if (scrollViewer != null)
+                
+                ScrollViewer scrollViewer = (ScrollViewer)this.FindName("scrollViewer"); 
                 {
-                    // Cuộn đến dưới cùng (cuộn đến cuối nội dung)
+                    
                     scrollViewer.ScrollToVerticalOffset(scrollViewer.ExtentHeight);
 
                 }
@@ -95,7 +94,7 @@ namespace ManagamentLibrary.Views
                     return;
                 }
 
-                // Chuyển đổi giá trị nhập vào thành các kiểu dữ liệu tương ứng
+                string Msv = MSV.Text;
                 string bkName = Name.Text;
                 string bkClass = Class.Text;
                 string bkPhone = Phone.Text;
@@ -104,6 +103,7 @@ namespace ManagamentLibrary.Views
 
                 var student = new StudentModel()
                 {
+                    MSV = Msv,
                     Name = bkName,
                     Class = bkClass,
                     PhoneNumber = bkPhone,

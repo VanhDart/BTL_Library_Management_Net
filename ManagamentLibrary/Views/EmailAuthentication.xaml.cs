@@ -26,7 +26,7 @@ namespace ManagamentLibrary
     {
         private readonly SignUp _signUp;
         private ForgotPassword _forgotPassword;
-        private string? generatedCode; // biến thành viên dùng chung
+        private string? generatedCode; 
 
         private readonly string verificationPurpose;  // verificationPurpose : Mục đích xác minh
         private readonly EmailAuthenticationController _emailAuthenticationController;
@@ -85,7 +85,7 @@ namespace ManagamentLibrary
                     MessageBox.Show("Không thể gửi mã xác nhận. Vui lòng thử lại sau.");
                 }
             }
-            else if (_emailAuthenticationController.ValidateEmailForForgotPassword(email)) // IsNullOrEmpty: trả về true nếu null , trả về false nếu khác null
+            else if (_emailAuthenticationController.ValidateEmailForForgotPassword(email))
             {
                 if (_emailAuthenticationController.SendVerificationEmail(email, generatedCode))
                 {

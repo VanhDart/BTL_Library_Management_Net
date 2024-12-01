@@ -42,7 +42,7 @@ namespace ManagamentLibrary
 
         private void dataGridView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(dataGridView1.SelectedItem is DataRowView currentRow) // DataRowView để truy cập vào dữ liệu hàng đã chọn
+            if(dataGridView1.SelectedItem is DataRowView currentRow) 
             {
                 string? bkID = currentRow["bookId"].ToString();
                 string? bkName = currentRow["bookName"].ToString();
@@ -60,11 +60,11 @@ namespace ManagamentLibrary
                 Price_TextBox.Text = bkPrice;
                 Quantity_TextBox.Text= bkQuantity;
 
-                // Cuộn màn hình đến phần TextBox
-                ScrollViewer scrollViewer = (ScrollViewer)this.FindName("scrollViewer"); // Lấy ScrollViewer từ XAML
+               
+                ScrollViewer scrollViewer = (ScrollViewer)this.FindName("scrollViewer"); 
                 if (scrollViewer != null)
                 {
-                    // Cuộn đến dưới cùng (cuộn đến cuối nội dung)
+                    
                     scrollViewer.ScrollToVerticalOffset(scrollViewer.ExtentHeight);
 
                 }
@@ -100,7 +100,7 @@ namespace ManagamentLibrary
                     return;
                 }
 
-                // Chuyển đổi giá trị nhập vào thành các kiểu dữ liệu tương ứng
+                
                 string bkID = BookId_TextBox.Text;
                 string bkName = BkName_TextBox.Text;
                 string bkAuthor = AuthorName_TextBox.Text;
@@ -109,7 +109,7 @@ namespace ManagamentLibrary
                 int bkPrice;
                 int bkQuantity;
 
-                // Kiểm tra giá trị giá sách và số lượng có phải là số hợp lệ không
+                
                 if (!int.TryParse(Price_TextBox.Text, out bkPrice) || bkPrice <= 0)
                 {
                     MessageBox.Show("Please enter a valid positive number for price.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);

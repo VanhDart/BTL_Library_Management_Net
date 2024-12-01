@@ -124,7 +124,7 @@ namespace ManagamentLibrary
                 return;
             }
 
-            // Chuyển đổi giá trị nhập vào thành các kiểu dữ liệu tương ứng
+            
             string bkName = BookName.Text;
             string bkAuthor = AuthorName.Text;
             string bkPublication = BookPublication.Text;
@@ -132,7 +132,7 @@ namespace ManagamentLibrary
             int bkPrice;
             int bkQuantity;
 
-            // Kiểm tra giá trị giá sách và số lượng có phải là số hợp lệ không
+            
             if (!int.TryParse(BookPrice.Text, out bkPrice) || bkPrice <= 0)
             {
                 MessageBox.Show("Please enter a valid positive number for price.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);

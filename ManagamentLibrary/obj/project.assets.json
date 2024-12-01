@@ -512,11 +512,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\BTL .Net\\BTL\\ManagamentLibrary\\ManagamentLibrary.csproj",
+      "projectUniqueName": "D:\\BTL .Net\\BTL_Library_Management_Net\\ManagamentLibrary\\ManagamentLibrary.csproj",
       "projectName": "ManagamentLibrary",
-      "projectPath": "D:\\BTL .Net\\BTL\\ManagamentLibrary\\ManagamentLibrary.csproj",
+      "projectPath": "D:\\BTL .Net\\BTL_Library_Management_Net\\ManagamentLibrary\\ManagamentLibrary.csproj",
       "packagesPath": "C:\\Users\\HUU HOA COMPUTER\\.nuget\\packages\\",
-      "outputPath": "D:\\BTL .Net\\BTL\\ManagamentLibrary\\obj\\",
+      "outputPath": "D:\\BTL .Net\\BTL_Library_Management_Net\\ManagamentLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HUU HOA COMPUTER\\AppData\\Roaming\\NuGet\\NuGet.Config",

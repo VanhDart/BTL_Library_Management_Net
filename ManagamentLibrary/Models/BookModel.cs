@@ -21,7 +21,7 @@ namespace ManagamentLibrary.Models
         public int Price { get; set; }
         public int Quantity { get; set; }
 
-        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=a;Integrated Security=True";
+        private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=Library Management;Integrated Security=True";
 
         public void LoadData(DataGrid grid)
         {
@@ -29,7 +29,7 @@ namespace ManagamentLibrary.Models
             {
                 con.Open(); 
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM NewBook", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Book", con);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -46,7 +46,7 @@ namespace ManagamentLibrary.Models
             {
                 conn.Open();
 
-                string sqlQueryNewBK = "INSERT INTO NewBook (bookName, bookAuthor, bkPulication, bookDate, bookPrice, bkQuantity) VALUES (@bookName, @bookAuthor, @bkPulication, @bookDate, @bookPrice, @bkQuantity)";
+                string sqlQueryNewBK = "INSERT INTO Book (bookName, bookAuthor, bkPulication, bookDate, bookPrice, bkQuantity) VALUES (@bookName, @bookAuthor, @bkPulication, @bookDate, @bookPrice, @bkQuantity)";
 
                 using (SqlCommand command = new SqlCommand(sqlQueryNewBK, conn))
                 {
@@ -69,7 +69,8 @@ namespace ManagamentLibrary.Models
             {
                 conn.Open();
 
-                string sqlQueryNewBK = "UPDATE NewBook SET bookName = @bookName ,bookAuthor = @bookAuthor ,bkPulication = @bkPulication ,bookDate = @bookDate ,bookPrice = @bookPrice ,bkQuantity = @bkQuantity WHERE bookId = @bookId ";
+                string sqlQueryNewBK = @"
+                                        UPDATE Book SET bookName = @bookName ,bookAuthor = @bookAuthor ,bkPulication = @bkPulication ,bookDate = @bookDate ,bookPrice = @bookPrice ,bkQuantity = @bkQuantity WHERE bookId = @bookId; ";
 
                 using (SqlCommand command = new SqlCommand(sqlQueryNewBK, conn))
                 {
@@ -92,7 +93,8 @@ namespace ManagamentLibrary.Models
             {
                 conn.Open();
 
-                string sqlQueryNewBK = "DELETE FROM NewBook WHERE bookId = @bookId ";
+                string sqlQueryNewBK = @"DELETE FROM BorrowBook WHERE bookId = @bookId;
+                                            DELETE FROM Book WHERE bookId = @bookId;";
 
                 using (SqlCommand command = new SqlCommand(sqlQueryNewBK, conn))
                 {
@@ -112,7 +114,7 @@ namespace ManagamentLibrary.Models
                 {
                     con.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM NewBook WHERE bookName LIKE @searchText OR bookId LIKE @searchText", con);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Book WHERE bookName LIKE @searchText OR bookId LIKE @searchText", con);
                     cmd.Parameters.AddWithValue("@searchText", "%" + search.Text + "%"); 
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();

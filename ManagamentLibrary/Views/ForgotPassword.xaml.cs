@@ -61,12 +61,6 @@ namespace ManagamentLibrary
             email.Show();
             this.Hide();
         }
-        /*
-         muốn gọi được Email_Authentication_Content.Content phải gọi 1 thuộc tính EmailContent trong EmailAuthentication 
-        
-        muốn lấy 1 cái thuộc tính nào từ bên b thì bên hàm khởi tạo bên a phải truyền 1 biến kiểu b vào và bên b cũng khỏi tạo 1 đối tượng a truyền this vào 
-        để tham chiều các giá trị từ bên b sang bên a
-         */
         private void ChangePassWord_Click(object sender, RoutedEventArgs e)
         {
             string email = _emailAuthentication.EmailContent;

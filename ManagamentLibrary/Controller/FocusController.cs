@@ -72,7 +72,6 @@ namespace ManagamentLibrary.Controller
             }
             else
             {
-                // Chuyển từ chế độ ẩn sang hiển thị mật khẩu
                 visibleName.Text = hiddenName.Password;
                 hiddenName.Visibility = Visibility.Collapsed;
                 visibleName.Visibility = Visibility.Visible;
