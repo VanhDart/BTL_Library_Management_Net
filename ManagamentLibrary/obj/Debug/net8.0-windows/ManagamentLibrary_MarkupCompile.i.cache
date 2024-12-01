@@ -1,0 +1,20 @@
+﻿ManagamentLibrary
+1.0.0.0
+
+winexe
+C#
+.cs
+D:\BTL .Net\BTL\ManagamentLibrary\obj\Debug\net8.0-windows\
+ManagamentLibrary
+none
+false
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+D:\BTL .Net\BTL\ManagamentLibrary\App.xaml
+12593470831
+
+35202716318
+2001181694595
+Views\AddBook.xaml;Views\AddStudent.xaml;Views\BorrowBook.xaml;Views\Borrow_ReturnHistory.xaml;Views\DashBoard.xaml;Views\EmailAuthentication.xaml;Views\ForgotPassword.xaml;Views\Login.xaml;Views\ReturnBook.xaml;Views\SignUp.xaml;Views\ViewBook.xaml;Views\ViewStudent.xaml;
+
+False
+
