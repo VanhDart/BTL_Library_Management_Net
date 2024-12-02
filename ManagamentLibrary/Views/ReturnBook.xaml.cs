@@ -61,6 +61,7 @@ namespace ManagamentLibrary.Views
                 string? Class = currentRow["Class"].ToString();
                 string? Phone = currentRow["Phone"].ToString();
                 string? Email = currentRow["Email"].ToString();
+                string? bookId = currentRow["bookId"].ToString();
                 string? bkName = currentRow["BookName"].ToString();
                 string? BorrowDate = currentRow["BorrowDate"].ToString();
 
@@ -83,6 +84,7 @@ namespace ManagamentLibrary.Views
                     studentClass = Class,
                     studentEmail = Email,
                     studentPhone = Phone,
+                    bookId = bookId,
                     bookName = bkName,
                     borrowDate = BorrowDate,
                 };

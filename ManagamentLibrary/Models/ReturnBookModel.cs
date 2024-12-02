@@ -22,6 +22,7 @@ namespace ManagamentLibrary.Models
         public string? bookName { get; set; } 
         public string? borrowDate { get; set; } 
         public string? returnDate { get; set; }
+        public string? bookId { get; set; }
 
         private readonly string connect = "Data Source=DESKTOP-2AK902G\\MSSQLSERVER2022;Initial Catalog=Library Management;Integrated Security=True";
         public void ReturnBookAndDeleteBorrowBook()
@@ -31,10 +32,10 @@ namespace ManagamentLibrary.Models
                 conn.Open();
                 string sqlInsert = @"
                         INSERT INTO ReturnBook (ReturnId, BorrowId, StudentName, StudentID, StudentClass, 
-                                                StudentPhone, StudentEmail, BookName, BorrowDate, ReturnDate)
+                                                StudentPhone, StudentEmail, BookName, BorrowDate, ReturnDate, BookId)
                         VALUES
                             (@ReturnId, @BorrowId, @StudentName, @StudentID, @StudentClass, 
-                            @StudentPhone, @StudentEmail, @BookName, @BorrowDate, @ReturnDate)";
+                            @StudentPhone, @StudentEmail, @BookName, @BorrowDate, @ReturnDate, @BookId)";
                 using (SqlCommand command = new SqlCommand(sqlInsert, conn))
                 {
                     command.Parameters.AddWithValue("@ReturnId", returnId);
@@ -47,6 +48,7 @@ namespace ManagamentLibrary.Models
                     command.Parameters.AddWithValue("@BookName", bookName);
                     command.Parameters.AddWithValue("@BorrowDate", borrowDate);
                     command.Parameters.AddWithValue("@ReturnDate", returnDate);
+                    command.Parameters.AddWithValue("@BookId", bookId);
                     command.ExecuteNonQuery();
                 }
 
@@ -76,6 +78,7 @@ namespace ManagamentLibrary.Models
                             s.Class, 
                             s.Phone, 
                             s.Email, 
+                            nb.bookId,
                             nb.bookName AS BookName, 
                             bb.BorrowDate
                         FROM BorrowBook bb

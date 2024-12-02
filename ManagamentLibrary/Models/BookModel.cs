@@ -94,6 +94,7 @@ namespace ManagamentLibrary.Models
                 conn.Open();
 
                 string sqlQueryNewBK = @"DELETE FROM BorrowBook WHERE bookId = @bookId;
+                                            DELETE FROM ReturnBook WHERE BookId = @bookId;
                                             DELETE FROM Book WHERE bookId = @bookId;";
 
                 using (SqlCommand command = new SqlCommand(sqlQueryNewBK, conn))

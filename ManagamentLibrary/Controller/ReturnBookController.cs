@@ -31,6 +31,7 @@ namespace ManagamentLibrary.Controller
                 studentClass = returnBook.studentClass,
                 studentEmail = returnBook.studentEmail,
                 studentPhone = returnBook.studentPhone,
+                bookId = returnBook.bookId,
                 bookName = returnBook.bookName,
                 borrowDate = returnBook.borrowDate,
                 returnDate = returnBook.returnDate,
